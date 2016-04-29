@@ -75,6 +75,7 @@ public class RegistroChamadoTest {
         assertEquals(true, chamado2.equals(rc.getChamado()));
         
     }
+    
 // ATÉ AQUI, FEITO!
     /**
      * Test of getChamado method, of class RegistroChamado.
