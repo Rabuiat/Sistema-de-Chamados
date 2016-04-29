@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.fail;
 
 /**
@@ -20,7 +21,9 @@ public class ChamadoTest {
     Empresa instance = new Empresa(211,"Mack");
     ClienteEmpresa freddy = new ClienteEmpresa(5, instance, 1234545, "Fred", 3433232);
     Tecnico rafa = new Tecnico("Rafa", 26737779);
-    Chamado chamado = new Chamado("OSX", "ajuda para Mack", 5, rafa, freddy, "Linux", "4.5","quebrado", 50.4);
+    Chamado chamado = new Chamado("OSX", "ajuda para Mack", 5, rafa, freddy, "Linux", "4.5","discada", 50.4);
+    Chamado rede = new Chamado(Integer.SIZE, null, null, 5, rafa, freddy, null, null, "discada", "172.16.0.10");
+    Chamado desempenho = new Chamado(null, null, 2, rafa, freddy, null, null, "visita tecnica", 45.5);
     
     public ChamadoTest() {
     }
@@ -202,7 +205,7 @@ public class ChamadoTest {
      */
     @Test
     public void testGetPrioridade() {
-        System.out.println("getPrioridade");
+        System.out.println("Teste getPrioridade");
         int expResult = 5;
         int result = chamado.getPrioridade();
         assertEquals(expResult, result);
@@ -213,7 +216,7 @@ public class ChamadoTest {
      */
     @Test
     public void testSetPrioridade() {
-        System.out.println("setPrioridade");
+        System.out.println("Teste setPrioridade");
         int prioridadenova = 1;
         chamado.setPrioridade(prioridadenova);
         assertEquals(chamado.getPrioridade(), prioridadenova);
@@ -224,12 +227,9 @@ public class ChamadoTest {
      */
     @Test
     public void testGetSistemaOperacional() {
-        System.out.println("getSistemaOperacional");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getSistemaOperacional();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        System.out.println("Teste getSistemaOperacional");
+        String expResult = "Linux";
+        assertEquals(expResult, chamado.getSistemaOperacional());
     }
 
     /**
@@ -237,11 +237,11 @@ public class ChamadoTest {
      */
     @Test
     public void testSetSistemaOperacional() {
-        System.out.println("setSistemaOperacional");
-        String sistemaOperacional = "";
-        Chamado instance = null;
-        instance.setSistemaOperacional(sistemaOperacional);
-        fail("The test case is a prototype.");
+        System.out.println("Teste setSistemaOperacional");
+        String result = "windows";
+        chamado.setSistemaOperacional(result);
+        assertNotEquals(chamado.getSistemaOperacional(), "Linux");
+        
     }
 
     /**
@@ -249,12 +249,10 @@ public class ChamadoTest {
      */
     @Test
     public void testGetVersaoSO() {
-        System.out.println("getVersaoSO");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getVersaoSO();
+        System.out.println("Teste getVersaoSO");
+        String expResult = "4.5";
+        String result = chamado.getVersaoSO();
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -262,86 +260,10 @@ public class ChamadoTest {
      */
     @Test
     public void testSetVersaoSO() {
-        System.out.println("setVersaoSO");
-        String versaoSO = "";
-        Chamado instance = null;
-        instance.setVersaoSO(versaoSO);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getBancoDeDados method, of class Chamado.
-     */
-    @Test
-    public void testGetBancoDeDados() {
-        System.out.println("getBancoDeDados");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getBancoDeDados();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setBancoDeDados method, of class Chamado.
-     */
-    @Test
-    public void testSetBancoDeDados() {
-        System.out.println("setBancoDeDados");
-        String bancoDeDados = "";
-        Chamado instance = null;
-        instance.setBancoDeDados(bancoDeDados);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCausaProblema method, of class Chamado.
-     */
-    @Test
-    public void testGetCausaProblema() {
-        System.out.println("getCausaProblema");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getCausaProblema();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setCausaProblema method, of class Chamado.
-     */
-    @Test
-    public void testSetCausaProblema() {
-        System.out.println("setCausaProblema");
-        String causaProblema = "";
-        Chamado instance = null;
-        instance.setCausaProblema(causaProblema);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getSolucaoProblema method, of class Chamado.
-     */
-    @Test
-    public void testGetSolucaoProblema() {
-        System.out.println("getSolucaoProblema");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getSolucaoProblema();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setSolucaoProblema method, of class Chamado.
-     */
-    @Test
-    public void testSetSolucaoProblema() {
-        System.out.println("setSolucaoProblema");
-        String solucaoProblema = "";
-        Chamado instance = null;
-        instance.setSolucaoProblema(solucaoProblema);
-        fail("The test case is a prototype.");
+        System.out.println("Teste setVersaoSO");
+        String result = "6.0";
+        chamado.setVersaoSO(result);
+        assertEquals(chamado.getVersaoSO(), result);
     }
 
     /**
@@ -349,12 +271,10 @@ public class ChamadoTest {
      */
     @Test
     public void testGetTipoConexao() {
-        System.out.println("getTipoConexao");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getTipoConexao();
+        System.out.println("Teste getTipoConexao");       
+        String expResult = "discada";
+        String result = rede.getTipoConexao();
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -362,11 +282,11 @@ public class ChamadoTest {
      */
     @Test
     public void testSetTipoConexao() {
-        System.out.println("setTipoConexao");
-        String tipoConexao = "";
-        Chamado instance = null;
-        instance.setTipoConexao(tipoConexao);
-        fail("The test case is a prototype.");
+        System.out.println("Teste setTipoConexao");
+        String expResult = "banda larga";
+        rede.setTipoConexao(expResult);
+        assertEquals(expResult, rede.getTipoConexao());
+        
     }
 
     /**
@@ -374,12 +294,10 @@ public class ChamadoTest {
      */
     @Test
     public void testGetEnderecoRede() {
-        System.out.println("getEnderecoRede");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getEnderecoRede();
+        System.out.println("Teste getEnderecoRede");
+        String expResult = "172.16.0.10";
+        String result = rede.getEnderecoRede();
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -387,11 +305,10 @@ public class ChamadoTest {
      */
     @Test
     public void testSetEnderecoRede() {
-        System.out.println("setEnderecoRede");
-        String enderecoRede = "";
-        Chamado instance = null;
-        instance.setEnderecoRede(enderecoRede);
-        fail("The test case is a prototype.");
+        System.out.println("Teste setEnderecoRede");
+        String enderecoRede = "10.0.1.10";
+        rede.setEnderecoRede(enderecoRede);
+        assertEquals(rede.getEnderecoRede(), enderecoRede);
     }
 
     /**
@@ -399,12 +316,11 @@ public class ChamadoTest {
      */
     @Test
     public void testGetOperacao() {
-        System.out.println("getOperacao");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getOperacao();
+        System.out.println("Teste getOperacao");
+        String expResult = "visita tecnica";
+        String result = desempenho.getOperacao();
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -412,11 +328,11 @@ public class ChamadoTest {
      */
     @Test
     public void testSetOperacao() {
-        System.out.println("setOperacao");
-        String operacao = "";
-        Chamado instance = null;
-        instance.setOperacao(operacao);
-        fail("The test case is a prototype.");
+        System.out.println("Teste setOperacao");
+        String operacaonovo = "Troca aparelho";
+        desempenho.setOperacao(operacaonovo);
+        assertEquals(desempenho.getOperacao(), operacaonovo);
+        
     }
 
     /**
@@ -424,12 +340,11 @@ public class ChamadoTest {
      */
     @Test
     public void testGetDuracaoOperacao() {
-        System.out.println("getDuracaoOperacao");
-        Chamado instance = null;
-        double expResult = 0.0;
-        double result = instance.getDuracaoOperacao();
-        assertEquals(expResult, result, 0.0);
-        fail("The test case is a prototype.");
+        System.out.println("Teste getDuracaoOperacao");
+        double expResult = 45.5;
+        double result = desempenho.getDuracaoOperacao();
+        assertEquals(expResult, result, 0);
+
     }
 
     /**
@@ -437,11 +352,11 @@ public class ChamadoTest {
      */
     @Test
     public void testSetDuracaoOperacao() {
-        System.out.println("setDuracaoOperacao");
-        double duracaoOperacao = 0.0;
-        Chamado instance = null;
-        instance.setDuracaoOperacao(duracaoOperacao);
-        fail("The test case is a prototype.");
+        System.out.println("Teste setDuracaoOperacao");
+        double duracaoOperacao = 50.0;
+        desempenho.setDuracaoOperacao(duracaoOperacao);
+        assertEquals(desempenho.getDuracaoOperacao(), duracaoOperacao, 0);
+      
     }
 
     /**
