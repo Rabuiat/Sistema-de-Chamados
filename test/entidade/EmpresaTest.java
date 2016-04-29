@@ -5,12 +5,9 @@
  */
 package entidade;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  *
@@ -18,12 +15,15 @@ import static org.junit.Assert.*;
  */
 public class EmpresaTest {
     
+   Empresa instance = new Empresa(211,"Mack");
+   
+   
     public EmpresaTest() {
     }
   
     @Test
     public void testGetNumeroContrato() {
-        System.out.println("getNumeroContrato");
+        System.out.println("Teste getNumeroContrato");
         Empresa instance = new Empresa(211,"Buiat");
         long expResult = 211;
         long result = instance.getNumeroContrato();
@@ -34,55 +34,59 @@ public class EmpresaTest {
     /**
      * Test of setNumeroContrato method, of class Empresa.
 //     */
-//    @Test
-//    public void testSetNumeroContrato() {
-//        System.out.println("setNumeroContrato");
-//        long numeroContrato = 0L;
-//        Empresa instance = null;
-//        instance.setNumeroContrato(numeroContrato);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of getNomeEmpresa method, of class Empresa.
-//     */
-//    @Test
-//    public void testGetNomeEmpresa() {
-//        System.out.println("getNomeEmpresa");
-//        Empresa instance = null;
-//        String expResult = "";
-//        String result = instance.getNomeEmpresa();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of setNomeEmpresa method, of class Empresa.
-//     */
-//    @Test
-//    public void testSetNomeEmpresa() {
-//        System.out.println("setNomeEmpresa");
-//        String nomeEmpresa = "";
-//        Empresa instance = null;
-//        instance.setNomeEmpresa(nomeEmpresa);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of toString method, of class Empresa.
-//     */
-//    @Test
-//    public void testToString() {
-//        System.out.println("toString");
-//        Empresa instance = null;
-//        String expResult = "";
-//        String result = instance.toString();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testSetNumeroContrato() {
+       System.out.println("Teste setNumeroContrato");
+       long numeroContrato = 40;
+       instance.setNumeroContrato(numeroContrato);
+       assertEquals(instance.getNumeroContrato(), numeroContrato);
+       
+
+    }
+
+    /**
+     * Test of getNomeEmpresa method, of class Empresa.
+     */
+    @Test
+    public void testGetNomeEmpresa() {
+       System.out.println("Teste getNomeEmpresa");
+       String expResult = "Mack";
+       String result = instance.getNomeEmpresa();
+       assertEquals(result, expResult);
+   }
+
+    /**
+     * Test of setNomeEmpresa method, of class Empresa.
+     */
+    @Test
+   public void testSetNomeEmpresa() {
+        System.out.println("Teste setNomeEmpresa");
+        String nomeEmpresa = "First Place";
+        instance.setNomeEmpresa(nomeEmpresa);
+        assertEquals(nomeEmpresa, instance.getNomeEmpresa());
+
+    }
+
+    /**
+     * Test of toString method, of class Empresa.
+     */
+   @Test
+    public void testToString() {
+        System.out.println("Teste toString");
+        String expResult = "211 - Mack";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+        
+    }
+    
+    
+    @Test
+    public void testEmpresaNomesIguais(){
+        Empresa teste2 = new Empresa(211, "Mackenzie");
+        Empresa teste = new Empresa(340, "Mack");
+        assertNotEquals(teste, instance);
+        assertNotEquals(teste2, instance);
+    
+}
     
 }
