@@ -20,26 +20,7 @@ public class EmpresaTest {
     
     public EmpresaTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getNumeroContrato method, of class Empresa.
-     */
+  
     @Test
     public void testGetNumeroContrato() {
         System.out.println("getNumeroContrato");
