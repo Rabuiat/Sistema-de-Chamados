@@ -7,11 +7,9 @@ package entidade;
 
 import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.fail;
 
 /**
  *
@@ -362,16 +360,22 @@ public class ChamadoTest {
     /**
      * Test of equals method, of class Chamado.
      */
-    
-    @Test
+     @Test
     public void testEquals() {
-        System.out.println("equals");
-        Object c = null;
-        Chamado instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(c);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        System.out.println("Teste equals");
+        Calendar calendar = Calendar.getInstance();
+        String data = DateFormat.getDateInstance().format(calendar.getTime());
+        Chamado chamadoT = new Chamado("OSX", "ajuda para Mack", 5, rafa, freddy, "Linux", "4.5", "discada", 50.4);
+
+        chamado.setCodigo(6);
+        chamado.setData(data);
+        chamadoT.setCodigo(6);
+        chamadoT.setData(data);       
+        assertEquals(true, chamadoT.equals(chamadoT));
+        
+        chamadoT.setTitulo("MBA");
+        assertEquals(false, chamado.equals(chamadoT));
+
     }
-    
+
 }
