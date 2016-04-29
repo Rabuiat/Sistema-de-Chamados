@@ -140,30 +140,30 @@ public class ControleChamados {
             			break;
             			
             		case 4 :
-            			prioridade = "Crítica";
+            			prioridade = "CrXtica";
             			break;
             	}
                 relatorio += "\n" + "--------" + "\nData de abertura do chamado: " +
                     	ref.getData() + 
-                    	"\nHorário de abertura do chamado: " + ref.getHora() + 
-                    	"\nTítulo do chamado: " + ref.getTitulo() + 
-                    	"\nCódigo do chamado: " + ref.getCodigo() +
-                    	"\nDescrição do chamado: " + ref.getDescricao() + 
+                    	"\nHorXrio de abertura do chamado: " + ref.getHora() + 
+                    	"\nTXtulo do chamado: " + ref.getTitulo() + 
+                    	"\nCXdigo do chamado: " + ref.getCodigo() +
+                    	"\nDescriXXo do chamado: " + ref.getDescricao() + 
                     	"\nPrioridade do chamado: " + prioridade + 
                     	"\nStatus do chamado: " + ref.getStatus() + 
                     	"\nTipo de problema do chamado: " + ref.getTipoProblema() + 
-                    	"\nTécnico responsável pelo chamado: " + ref.getTecnico() + 
+                    	"\nTXcnico responsXvel pelo chamado: " + ref.getTecnico() + 
                     	"\nCliente requisitor do chamado: " + ref.getCliente() + "\n";
                 
                 for(RegistroChamado rc : registros){
                 	if(rc.getChamado().equals(ref)){
-                		relatorio += "\nRelatório de registros de acompanhamento:" + 
+                		relatorio += "\nRelatXrio de registros de acompanhamento:" + 
                 	"\nData: " + rc.getData() + 
                 	"\nHora: " + rc.getHora() + 
                 	"\nAssunto: " + rc.getAssunto() +
-                	"\nTécnico responsável: " + rc.getTecnico().getNome() +
+                	"\nTXcnico responsXvel: " + rc.getTecnico().getNome() +
                 	"\nCausa do problema: " + ref.getCausaProblema() + 
-                	"\nSolução do problema: " + ref.getSolucaoProblema();
+                	"\nSoluXXo do problema: " + ref.getSolucaoProblema();
                 	}
                 }
             }
@@ -190,7 +190,7 @@ public class ControleChamados {
 
         String detalhes = "\n" + "--------" + "\n" + "Data de abertura do chamado: "
                 + c.getData() + "\n" + "Hororio de abertura do chamado: " + c.getHora() + "\n"
-                + "Titulo do chamado: " + c.getTitulo() + "\n" + "Descriï¿½ï¿½o do chamado: " + c.getDescricao() + "\n"
+                + "Titulo do chamado: " + c.getTitulo() + "\n" + "DescriXXo do chamado: " + c.getDescricao() + "\n"
                 + "Prioridade do chamado" + c.getPrioridade() + "\n" + "Status do chamado: " + c.getStatus() + "\n"
                 + "Tipo de problema do chamado: " + c.getTipoProblema() + "\n" + "Tecnico responsovel pelo chamado: "
                 + c.getTecnico() + "\n" + "Cliente requisitor do chamado: " + c.getCliente() + "\n";
