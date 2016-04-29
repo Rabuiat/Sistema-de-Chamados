@@ -362,6 +362,7 @@ public class ChamadoTest {
     /**
      * Test of equals method, of class Chamado.
      */
+    
     @Test
     public void testEquals() {
         System.out.println("equals");
