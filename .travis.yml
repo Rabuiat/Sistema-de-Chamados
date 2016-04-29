@@ -1,4 +1,4 @@
 language: java
-ant test
+script: "ant"
 jdk:
   - oraclejdk8
