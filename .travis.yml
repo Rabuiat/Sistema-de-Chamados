@@ -1,6 +1,5 @@
 language: java
-script: "maven"
+script: "ant"
 jdk:
   - oraclejdk8
   
-mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
