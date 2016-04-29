@@ -1,4 +1,4 @@
 language: java
-script: "jdk"
+script: "env"
 jdk:
   - oraclejdk8
