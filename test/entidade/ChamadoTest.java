@@ -5,8 +5,12 @@
  */
 package entidade;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  *
@@ -14,9 +18,9 @@ import static org.junit.Assert.assertEquals;
  */
 public class ChamadoTest {
     Empresa instance = new Empresa(211,"Mack");
-    ClienteEmpresa fred = new ClienteEmpresa(5, instance, 1234545, "Fred", 3433232);
+    ClienteEmpresa freddy = new ClienteEmpresa(5, instance, 1234545, "Fred", 3433232);
     Tecnico rafa = new Tecnico("Rafa", 26737779);
-    Chamado chamado = new Chamado("OSX", "ajuda para Mack", 5, rafa, fred, "Linux", "4.5","quebrado", 50.4);
+    Chamado chamado = new Chamado("OSX", "ajuda para Mack", 5, rafa, freddy, "Linux", "4.5","quebrado", 50.4);
     
     public ChamadoTest() {
     }
@@ -27,10 +31,8 @@ public class ChamadoTest {
     @Test
     public void testGetTecnico() {
         System.out.println("Teste getTecnico");
-        Chamado instance = null;
-        Tecnico expResult = null;
-        Tecnico result = instance.getTecnico();
-        assertEquals(expResult, result);
+        Tecnico expResult = chamado.getTecnico();
+        assertEquals(rafa, expResult);
     }
 
     /**
@@ -38,12 +40,10 @@ public class ChamadoTest {
      */
     @Test
     public void testGetCodigo() {
-        System.out.println("getCodigo");
-        Chamado instance = null;
-        int expResult = 0;
-        int result = instance.getCodigo();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        System.out.println("Teste getCodigo");
+        int expResult = 5;
+        assertEquals(expResult, chamado.getCodigo());
+        System.out.println(chamado.getCodigo());
     }
 
     /**
@@ -51,11 +51,12 @@ public class ChamadoTest {
      */
     @Test
     public void testSetCodigo() {
-        System.out.println("setCodigo");
-        int codigo = 0;
-        Chamado instance = null;
-        instance.setCodigo(codigo);
-        fail("The test case is a prototype.");
+        System.out.println("Teste setCodigo");
+        int codigoexp = 6;
+        chamado.setCodigo(6);
+        int codigo = chamado.getCodigo();
+        assertEquals(codigoexp, codigo);
+        //
     }
 
     /**
@@ -63,11 +64,10 @@ public class ChamadoTest {
      */
     @Test
     public void testSetTecnico() {
-        System.out.println("setTecnico");
-        Tecnico tecnico = null;
-        Chamado instance = null;
-        instance.setTecnico(tecnico);
-        fail("The test case is a prototype.");
+        System.out.println("Teste setTecnico");
+        Tecnico fred = new Tecnico("fred", 2555353);
+        chamado.setTecnico(fred);
+        assertEquals(fred, chamado.getTecnico());
     }
 
     /**
@@ -75,12 +75,8 @@ public class ChamadoTest {
      */
     @Test
     public void testGetCliente() {
-        System.out.println("getCliente");
-        Chamado instance = null;
-        ClienteEmpresa expResult = null;
-        ClienteEmpresa result = instance.getCliente();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        System.out.println("Teste getCliente");
+        assertEquals(freddy, chamado.getCliente());
     }
 
     /**
@@ -88,11 +84,10 @@ public class ChamadoTest {
      */
     @Test
     public void testSetCliente() {
-        System.out.println("setCliente");
-        ClienteEmpresa cliente = null;
-        Chamado instance = null;
-        instance.setCliente(cliente);
-        fail("The test case is a prototype.");
+        System.out.println("Teste setCliente");
+        ClienteEmpresa cliente = new ClienteEmpresa(7, instance, 873736432, "Calebe", 5637525);
+        chamado.setCliente(cliente);
+        assertEquals(cliente, chamado.getCliente());
     }
 
     /**
@@ -100,12 +95,8 @@ public class ChamadoTest {
      */
     @Test
     public void testGetStatus() {
-        System.out.println("getStatus");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getStatus();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        System.out.println("Teste getStatus");
+        assertEquals(chamado.getStatus(), "Iniciado");
     }
 
     /**
@@ -113,11 +104,9 @@ public class ChamadoTest {
      */
     @Test
     public void testSetStatus() {
-        System.out.println("setStatus");
-        String status = "";
-        Chamado instance = null;
-        instance.setStatus(status);
-        fail("The test case is a prototype.");
+        System.out.println("Teste setStatus");
+        chamado.setStatus("Fechado");
+        assertEquals(chamado.getStatus(), "Fechado");
     }
 
     /**
@@ -125,12 +114,8 @@ public class ChamadoTest {
      */
     @Test
     public void testGetTipoProblema() {
-        System.out.println("getTipoProblema");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getTipoProblema();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        System.out.println("Teste getTipoProblema");
+        assertEquals("Problema de Desempenho", chamado.getTipoProblema());
     }
 
     /**
@@ -138,11 +123,10 @@ public class ChamadoTest {
      */
     @Test
     public void testSetTipoProblema() {
-        System.out.println("setTipoProblema");
-        String tipoProblema = "";
-        Chamado instance = null;
-        instance.setTipoProblema(tipoProblema);
-        fail("The test case is a prototype.");
+        String novoProblema = "Problema de rede";
+        chamado.setTipoProblema(novoProblema);
+        assertEquals(chamado.getTipoProblema(), novoProblema);
+        
     }
 
     /**
@@ -150,49 +134,23 @@ public class ChamadoTest {
      */
     @Test
     public void testGetData() {
-        System.out.println("getData");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getData();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        System.out.println("Teste getData");
+        Calendar calendar = Calendar.getInstance();
+        String data = DateFormat.getDateInstance().format(calendar.getTime());
+        assertEquals(data, chamado.getData());
+        
     }
 
-    /**
-     * Test of setData method, of class Chamado.
-     */
-    @Test
-    public void testSetData() {
-        System.out.println("setData");
-        String data = "";
-        Chamado instance = null;
-        instance.setData(data);
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of getHora method, of class Chamado.
      */
     @Test
     public void testGetHora() {
-        System.out.println("getHora");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getHora();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setHora method, of class Chamado.
-     */
-    @Test
-    public void testSetHora() {
-        System.out.println("setHora");
-        String hora = "";
-        Chamado instance = null;
-        instance.setHora(hora);
-        fail("The test case is a prototype.");
+        System.out.println("Teste getHora");
+        Calendar calendar = Calendar.getInstance();
+        String time = DateFormat.getTimeInstance().format(calendar.getTime());
+        assertEquals(time, chamado.getHora());
     }
 
     /**
@@ -200,12 +158,10 @@ public class ChamadoTest {
      */
     @Test
     public void testGetTitulo() {
-        System.out.println("getTitulo");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getTitulo();
+        System.out.println("Teste getTitulo");
+        String expResult = "OSX";
+        String result = chamado.getTitulo();
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -213,11 +169,11 @@ public class ChamadoTest {
      */
     @Test
     public void testSetTitulo() {
-        System.out.println("setTitulo");
-        String titulo = "";
-        Chamado instance = null;
-        instance.setTitulo(titulo);
-        fail("The test case is a prototype.");
+        System.out.println("teste setTitulo");
+        String tituloNovo = "Windows";
+        chamado.setTitulo(tituloNovo);
+        String expResult = chamado.getTitulo();
+        assertEquals(expResult, tituloNovo);
     }
 
     /**
@@ -225,12 +181,9 @@ public class ChamadoTest {
      */
     @Test
     public void testGetDescricao() {
-        System.out.println("getDescricao");
-        Chamado instance = null;
-        String expResult = "";
-        String result = instance.getDescricao();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        System.out.println("Teste getDescricao");
+        String expResult = "ajuda para Mack";
+        assertEquals(expResult, chamado.getDescricao());
     }
 
     /**
@@ -238,11 +191,10 @@ public class ChamadoTest {
      */
     @Test
     public void testSetDescricao() {
-        System.out.println("setDescricao");
-        String descricao = "";
-        Chamado instance = null;
-        instance.setDescricao(descricao);
-        fail("The test case is a prototype.");
+        System.out.println("Teste setDescricao");
+        String descricaoNova = "Ajuda problemas de HTTP";
+        chamado.setDescricao(descricaoNova);
+        assertEquals(descricaoNova, chamado.getDescricao());
     }
 
     /**
@@ -251,11 +203,9 @@ public class ChamadoTest {
     @Test
     public void testGetPrioridade() {
         System.out.println("getPrioridade");
-        Chamado instance = null;
-        int expResult = 0;
-        int result = instance.getPrioridade();
+        int expResult = 5;
+        int result = chamado.getPrioridade();
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -264,10 +214,9 @@ public class ChamadoTest {
     @Test
     public void testSetPrioridade() {
         System.out.println("setPrioridade");
-        int prioridade = 0;
-        Chamado instance = null;
-        instance.setPrioridade(prioridade);
-        fail("The test case is a prototype.");
+        int prioridadenova = 1;
+        chamado.setPrioridade(prioridadenova);
+        assertEquals(chamado.getPrioridade(), prioridadenova);
     }
 
     /**
