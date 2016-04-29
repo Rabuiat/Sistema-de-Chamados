@@ -16,13 +16,14 @@ import static org.junit.Assert.assertNotEquals;
  * @author admin
  */
 public class ChamadoTest {
-    Empresa instance = new Empresa(211,"Mack");
+
+    Empresa instance = new Empresa(211, "Mack");
     ClienteEmpresa freddy = new ClienteEmpresa(5, instance, 1234545, "Fred", 3433232);
     Tecnico rafa = new Tecnico("Rafa", 26737779);
-    Chamado chamado = new Chamado("OSX", "ajuda para Mack", 5, rafa, freddy, "Linux", "4.5","discada", 50.4);
+    Chamado chamado = new Chamado("OSX", "ajuda para Mack", 5, rafa, freddy, "Linux", "4.5", "discada", 50.4);
     Chamado rede = new Chamado(Integer.SIZE, null, null, 5, rafa, freddy, null, null, "discada", "172.16.0.10");
     Chamado desempenho = new Chamado(null, null, 2, rafa, freddy, null, null, "visita tecnica", 45.5);
-    
+
     public ChamadoTest() {
     }
 
@@ -127,7 +128,7 @@ public class ChamadoTest {
         String novoProblema = "Problema de rede";
         chamado.setTipoProblema(novoProblema);
         assertEquals(chamado.getTipoProblema(), novoProblema);
-        
+
     }
 
     /**
@@ -139,9 +140,8 @@ public class ChamadoTest {
         Calendar calendar = Calendar.getInstance();
         String data = DateFormat.getDateInstance().format(calendar.getTime());
         assertEquals(data, chamado.getData());
-        
-    }
 
+    }
 
     /**
      * Test of getHora method, of class Chamado.
@@ -239,7 +239,7 @@ public class ChamadoTest {
         String result = "windows";
         chamado.setSistemaOperacional(result);
         assertNotEquals(chamado.getSistemaOperacional(), "Linux");
-        
+
     }
 
     /**
@@ -269,7 +269,7 @@ public class ChamadoTest {
      */
     @Test
     public void testGetTipoConexao() {
-        System.out.println("Teste getTipoConexao");       
+        System.out.println("Teste getTipoConexao");
         String expResult = "discada";
         String result = rede.getTipoConexao();
         assertEquals(expResult, result);
@@ -284,7 +284,7 @@ public class ChamadoTest {
         String expResult = "banda larga";
         rede.setTipoConexao(expResult);
         assertEquals(expResult, rede.getTipoConexao());
-        
+
     }
 
     /**
@@ -318,7 +318,7 @@ public class ChamadoTest {
         String expResult = "visita tecnica";
         String result = desempenho.getOperacao();
         assertEquals(expResult, result);
-       
+
     }
 
     /**
@@ -330,7 +330,7 @@ public class ChamadoTest {
         String operacaonovo = "Troca aparelho";
         desempenho.setOperacao(operacaonovo);
         assertEquals(desempenho.getOperacao(), operacaonovo);
-        
+
     }
 
     /**
@@ -354,13 +354,13 @@ public class ChamadoTest {
         double duracaoOperacao = 50.0;
         desempenho.setDuracaoOperacao(duracaoOperacao);
         assertEquals(desempenho.getDuracaoOperacao(), duracaoOperacao, 0);
-      
+
     }
 
     /**
      * Test of equals method, of class Chamado.
      */
-     @Test
+    @Test
     public void testEquals() {
         System.out.println("Teste equals");
         Calendar calendar = Calendar.getInstance();
@@ -370,9 +370,9 @@ public class ChamadoTest {
         chamado.setCodigo(6);
         chamado.setData(data);
         chamadoT.setCodigo(6);
-        chamadoT.setData(data);       
+        chamadoT.setData(data);
         assertEquals(true, chamadoT.equals(chamadoT));
-        
+
         chamadoT.setTitulo("MBA");
         assertEquals(false, chamado.equals(chamadoT));
 
