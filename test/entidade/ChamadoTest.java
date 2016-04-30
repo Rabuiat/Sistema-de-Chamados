@@ -288,7 +288,7 @@ public class ChamadoTest {
      */
     @Test
     public void testePrioridadesIguais() {
-        System.out.println("Teste menor prioridade de chamado");
+        System.out.println("Teste de prioridades iguais");
         chamado.setPrioridade(2);
         rede.setPrioridade(2);
         if ((rede.getPrioridade()) == (chamado.getPrioridade())) {
