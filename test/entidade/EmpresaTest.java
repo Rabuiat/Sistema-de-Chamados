@@ -14,33 +14,59 @@ import static org.junit.Assert.assertNotEquals;
  * @author 41411803
  */
 public class EmpresaTest {
-    
-   Empresa instance = new Empresa(211,"Mack");
-   
-   
+
+    Empresa instance = new Empresa(211, "Mack");
+    Empresa instance2 = new Empresa(211, "Nescau");
+
     public EmpresaTest() {
-    }
-  
-    @Test
-    public void testGetNumeroContrato() {
-        System.out.println("Teste getNumeroContrato");
-        Empresa instance = new Empresa(211,"Buiat");
-        long expResult = 211;
-        long result = instance.getNumeroContrato();
-        assertEquals(expResult, result);
-        
+
     }
 
     /**
-     * Test of setNumeroContrato method, of class Empresa.
-//     */
+     * Teste com Empresas iguais //
+     */
+    @Test
+    public void testeEmpresasIguais() {
+        System.out.println("Teste de Empresas com mesmo registro");
+        Empresa instance2 = new Empresa(211, "Mack");
+        assertEquals(instance2, instance);
+
+    }
+
+    /**
+     * Teste Empresas com números de contratos iguais;
+     */
+    @Test
+    public void testeEmpresaContrato() {
+        int result = (int) instance.getNumeroContrato();
+        int expResult = (int) instance2.getNumeroContrato();
+        assertEquals(expResult, result);
+
+    }
+
+    /**
+     * Test of getNumeroContrato method, of class Empresa. //
+     */
+
+    @Test
+    public void testGetNumeroContrato() {
+        System.out.println("Teste getNumeroContrato");
+        Empresa instance = new Empresa(211, "Buiat");
+        long expResult = 211;
+        long result = instance.getNumeroContrato();
+        assertEquals(expResult, result);
+
+    }
+
+    /**
+     * Test of setNumeroContrato method, of class Empresa. //
+     */
     @Test
     public void testSetNumeroContrato() {
-       System.out.println("Teste setNumeroContrato");
-       long numeroContrato = 40;
-       instance.setNumeroContrato(numeroContrato);
-       assertEquals(instance.getNumeroContrato(), numeroContrato);
-       
+        System.out.println("Teste setNumeroContrato");
+        long numeroContrato = 40;
+        instance.setNumeroContrato(numeroContrato);
+        assertEquals(instance.getNumeroContrato(), numeroContrato);
 
     }
 
@@ -49,17 +75,17 @@ public class EmpresaTest {
      */
     @Test
     public void testGetNomeEmpresa() {
-       System.out.println("Teste getNomeEmpresa");
-       String expResult = "Mack";
-       String result = instance.getNomeEmpresa();
-       assertEquals(result, expResult);
-   }
+        System.out.println("Teste getNomeEmpresa");
+        String expResult = "Mack";
+        String result = instance.getNomeEmpresa();
+        assertEquals(result, expResult);
+    }
 
     /**
      * Test of setNomeEmpresa method, of class Empresa.
      */
     @Test
-   public void testSetNomeEmpresa() {
+    public void testSetNomeEmpresa() {
         System.out.println("Teste setNomeEmpresa");
         String nomeEmpresa = "First Place";
         instance.setNomeEmpresa(nomeEmpresa);
@@ -70,23 +96,22 @@ public class EmpresaTest {
     /**
      * Test of toString method, of class Empresa.
      */
-   @Test
+    @Test
     public void testToString() {
         System.out.println("Teste toString");
         String expResult = "211 - Mack";
         String result = instance.toString();
         assertEquals(expResult, result);
-        
+
     }
-    
-    
+
     @Test
-    public void testEmpresaNomesIguais(){
+    public void testEmpresaNomesIguais() {
         Empresa teste2 = new Empresa(211, "Mackenzie");
         Empresa teste = new Empresa(340, "Mack");
         assertNotEquals(teste, instance);
         assertNotEquals(teste2, instance);
-    
-}
-    
+
+    }
+
 }

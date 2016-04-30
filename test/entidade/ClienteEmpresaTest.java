@@ -13,14 +13,14 @@ import static org.junit.Assert.assertEquals;
  * @author admin
  */
 public class ClienteEmpresaTest {
-    
+
     Empresa empresa = new Empresa(123456789, "Burger Queen");
     long cpf = 11111111;
     String nome = "Fernando Souza";
     long telefone = 998765432;
     Integer codigo = 1;
     ClienteEmpresa ce = new ClienteEmpresa(codigo, empresa, cpf, nome, telefone);
-    
+
     public ClienteEmpresaTest() {
     }
 
@@ -41,7 +41,7 @@ public class ClienteEmpresaTest {
     public void testSetCodigo() {
         System.out.println("setCodigo");
         Integer codigo = 2;
-        
+
         ce.setCodigo(codigo);
         assertEquals(codigo, ce.getCodigo());
     }
@@ -64,7 +64,7 @@ public class ClienteEmpresaTest {
     public void testSetCpf() {
         System.out.println("setCpf");
         long cpf = 2000022222;
-        
+
         ce.setCpf(cpf);
         assertEquals(cpf, ce.getCpf());
     }
@@ -72,7 +72,7 @@ public class ClienteEmpresaTest {
     /**
      * Test of getEmpresa method, of class ClienteEmpresa.
      */
-    @Test           
+    @Test
     public void testGetEmpresa() {
         System.out.println("getEmpresa");
 
@@ -84,7 +84,7 @@ public class ClienteEmpresaTest {
     public void getNomeEmpresa() {
         System.out.println("getNomeEmpresa(não existe o método)");
         String nomeEmpresa = ce.getEmpresa().getNomeEmpresa();
-        
+
         assertEquals(nomeEmpresa, ce.getEmpresa().getNomeEmpresa());
     }
 }

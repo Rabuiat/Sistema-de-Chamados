@@ -72,33 +72,30 @@ public class ChamadoTest {
         assertEquals(fred, chamado.getTecnico());
     }
 
-      /**
+    /**
      * Teste de técnico com chamados diferentes.
      */
-    
     @Test
-    public void testeTecnicoChamadosDiferentes(){
-        int a,b,c;
+    public void testeTecnicoChamadosDiferentes() {
+        int a, b, c;
         boolean result;
         chamado.setTecnico(rafa);
         rede.setTecnico(rafa);
         desempenho.setTecnico(rafa);
-        
+
         a = chamado.getTecnico().hashCode();
         b = rede.getTecnico().hashCode();
         c = desempenho.getTecnico().hashCode();
-        
-        if((a==b) && (b==c)  && (c==a)){
+
+        if ((a == b) && (b == c) && (c == a)) {
             result = true;
-            
-            
-        }
-        else{
+
+        } else {
             result = false;
         }
-            assertEquals(true, result);
+        assertEquals(true, result);
     }
-    
+
     /**
      * Test of getCliente method, of class Chamado.
      */
@@ -137,35 +134,34 @@ public class ChamadoTest {
         chamado.setStatus("Fechado");
         assertEquals(chamado.getStatus(), "Fechado");
     }
-     /**
+
+    /**
      * Chamados com o mesmo Cliente.
      */
     @Test
-    public void testChamadosMesmoCliente(){
+    public void testChamadosMesmoCliente() {
         System.out.println("Teste de cliente com diferentes chamados");
         ClienteEmpresa calebe = new ClienteEmpresa(10, mack, 93463844, "Calebe", 98363762);
         chamado.setCliente(calebe);
         rede.setCliente(calebe);
         assertEquals(rede.getCliente(), chamado.getCliente());
-     
+
     }
- 
-    
-        /**
+
+    /**
      * Chamado com diferentes Clientes.
      */
     @Test
-    public void testChamadoDiferentesCliente(){
+    public void testChamadoDiferentesCliente() {
         System.out.println("Teste de clientes com mesmo chamado");
         ClienteEmpresa calebe = new ClienteEmpresa(10, mack, 93463844, "Calebe", 98363762);
         Chamado bancoDados = new Chamado("OSX", "ajuda para Mack", 5, rafa, freddy, "Linux", "4.5", "discada", 50.4);
         Chamado bancoDados2 = new Chamado("OSX", "ajuda para Mack", 5, rafa, calebe, "Linux", "4.5", "discada", 50.4);
         bancoDados.setCliente(calebe);
         assertEquals(bancoDados.getCliente(), bancoDados2.getCliente());
-     
+
     }
- 
-    
+
     /**
      * Test of getTipoProblema method, of class Chamado.
      */
@@ -253,25 +249,23 @@ public class ChamadoTest {
         assertEquals(descricaoNova, chamado.getDescricao());
     }
 
-    
     /*
     *Teste de chamada com maior prioridade.
-    */ 
+     */
     @Test
-    public void testeMaiorPrioridade(){
+    public void testeMaiorPrioridade() {
         System.out.println("Teste maior prioridade de chamado");
         chamado.setPrioridade(2);
         rede.setPrioridade(4);
-        if((chamado.getPrioridade()) > (rede.getPrioridade())){
+        if ((chamado.getPrioridade()) > (rede.getPrioridade())) {
             boolean result = true;
             assertEquals(true, result);
-        }
-        else{
+        } else {
             boolean result = false;
             assertEquals(true, result);
-        }     
+        }
     }
-    
+
     /*
     *Teste de chamada com menor prioridade.
      */
@@ -289,8 +283,7 @@ public class ChamadoTest {
         }
     }
 
-    
-        /*
+    /*
     *Teste de chamada com igual prioridade.
      */
     @Test
@@ -306,6 +299,7 @@ public class ChamadoTest {
             assertEquals(true, result);
         }
     }
+
     /**
      * Test of getPrioridade method, of class Chamado.
      */

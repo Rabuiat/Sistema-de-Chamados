@@ -13,6 +13,10 @@ import static org.junit.Assert.assertEquals;
  * @author admin
  */
 public class PessoaTest {
+
+    
+    Pessoa a = new Pessoa("Rafael", 26737779);
+    Pessoa b = new Pessoa("Fred", 975633839);
     
     public PessoaTest() {
     }
@@ -64,10 +68,10 @@ public class PessoaTest {
         String nome = "Fausto Silva";
         long telefone = 998765432;
         Pessoa instance = new Pessoa(nome, telefone);
-        
+
         instance.setTelefone(988887777);
         long expResult = instance.getTelefone();
-        
+
         assertEquals(expResult, 988887777);
 
     }
