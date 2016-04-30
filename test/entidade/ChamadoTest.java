@@ -17,8 +17,8 @@ import static org.junit.Assert.assertNotEquals;
  */
 public class ChamadoTest {
 
-    Empresa instance = new Empresa(211, "Mack");
-    ClienteEmpresa freddy = new ClienteEmpresa(5, instance, 1234545, "Fred", 3433232);
+    Empresa mack = new Empresa(211, "Mack");
+    ClienteEmpresa freddy = new ClienteEmpresa(5, mack, 1234545, "Fred", 3433232);
     Tecnico rafa = new Tecnico("Rafa", 26737779);
     Chamado chamado = new Chamado("OSX", "ajuda para Mack", 5, rafa, freddy, "Linux", "4.5", "discada", 50.4);
     Chamado rede = new Chamado(Integer.SIZE, null, null, 5, rafa, freddy, null, null, "discada", "172.16.0.10");
@@ -72,6 +72,33 @@ public class ChamadoTest {
         assertEquals(fred, chamado.getTecnico());
     }
 
+      /**
+     * Teste de técnico com chamados diferentes.
+     */
+    
+    @Test
+    public void testeTecnicoChamadosDiferentes(){
+        int a,b,c;
+        boolean result;
+        chamado.setTecnico(rafa);
+        rede.setTecnico(rafa);
+        desempenho.setTecnico(rafa);
+        
+        a = chamado.getTecnico().hashCode();
+        b = rede.getTecnico().hashCode();
+        c = desempenho.getTecnico().hashCode();
+        
+        if((a==b) && (b==c)  && (c==a)){
+            result = true;
+            
+            
+        }
+        else{
+            result = false;
+        }
+            assertEquals(true, result);
+    }
+    
     /**
      * Test of getCliente method, of class Chamado.
      */
@@ -87,7 +114,7 @@ public class ChamadoTest {
     @Test
     public void testSetCliente() {
         System.out.println("Teste setCliente");
-        ClienteEmpresa cliente = new ClienteEmpresa(7, instance, 873736432, "Calebe", 5637525);
+        ClienteEmpresa cliente = new ClienteEmpresa(7, mack, 873736432, "Calebe", 5637525);
         chamado.setCliente(cliente);
         assertEquals(cliente, chamado.getCliente());
     }
@@ -110,7 +137,35 @@ public class ChamadoTest {
         chamado.setStatus("Fechado");
         assertEquals(chamado.getStatus(), "Fechado");
     }
-
+     /**
+     * Chamados com o mesmo Cliente.
+     */
+    @Test
+    public void testChamadosMesmoCliente(){
+        System.out.println("Teste de cliente com diferentes chamados");
+        ClienteEmpresa calebe = new ClienteEmpresa(10, mack, 93463844, "Calebe", 98363762);
+        chamado.setCliente(calebe);
+        rede.setCliente(calebe);
+        assertEquals(rede.getCliente(), chamado.getCliente());
+     
+    }
+ 
+    
+        /**
+     * Chamado com diferentes Clientes.
+     */
+    @Test
+    public void testChamadoDiferentesCliente(){
+        System.out.println("Teste de clientes com mesmo chamado");
+        ClienteEmpresa calebe = new ClienteEmpresa(10, mack, 93463844, "Calebe", 98363762);
+        Chamado bancoDados = new Chamado("OSX", "ajuda para Mack", 5, rafa, freddy, "Linux", "4.5", "discada", 50.4);
+        Chamado bancoDados2 = new Chamado("OSX", "ajuda para Mack", 5, rafa, calebe, "Linux", "4.5", "discada", 50.4);
+        bancoDados.setCliente(calebe);
+        assertEquals(bancoDados.getCliente(), bancoDados2.getCliente());
+     
+    }
+ 
+    
     /**
      * Test of getTipoProblema method, of class Chamado.
      */
@@ -198,6 +253,59 @@ public class ChamadoTest {
         assertEquals(descricaoNova, chamado.getDescricao());
     }
 
+    
+    /*
+    *Teste de chamada com maior prioridade.
+    */ 
+    @Test
+    public void testeMaiorPrioridade(){
+        System.out.println("Teste maior prioridade de chamado");
+        chamado.setPrioridade(2);
+        rede.setPrioridade(4);
+        if((chamado.getPrioridade()) > (rede.getPrioridade())){
+            boolean result = true;
+            assertEquals(true, result);
+        }
+        else{
+            boolean result = false;
+            assertEquals(true, result);
+        }     
+    }
+    
+    /*
+    *Teste de chamada com menor prioridade.
+     */
+    @Test
+    public void testeMenorPrioridade() {
+        System.out.println("Teste menor prioridade de chamado");
+        chamado.setPrioridade(2);
+        rede.setPrioridade(4);
+        if ((rede.getPrioridade()) < (chamado.getPrioridade())) {
+            boolean result = true;
+            assertEquals(true, result);
+        } else {
+            boolean result = false;
+            assertEquals(true, result);
+        }
+    }
+
+    
+        /*
+    *Teste de chamada com igual prioridade.
+     */
+    @Test
+    public void testePrioridadesIguais() {
+        System.out.println("Teste menor prioridade de chamado");
+        chamado.setPrioridade(2);
+        rede.setPrioridade(2);
+        if ((rede.getPrioridade()) == (chamado.getPrioridade())) {
+            boolean result = true;
+            assertEquals(true, result);
+        } else {
+            boolean result = false;
+            assertEquals(true, result);
+        }
+    }
     /**
      * Test of getPrioridade method, of class Chamado.
      */
