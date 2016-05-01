@@ -23,7 +23,7 @@ public class RegistroChamadoTest {
     private String assunto = "Cachorro destruiu servidor";
     private Tecnico tecnico = new Tecnico("Ariovaldo", 988876665);
     private ClienteEmpresa cliente = new ClienteEmpresa(5, empresa, 1234545, "Fred", 3433232);
-    private Chamado chamado = new Chamado("OSX", "ajuda para Mack", 5, tecnico, cliente, "Linux", "4.5", "quebrado", 50.4);
+    private Chamado chamado = new Chamado(codigo, "OSX", "ajuda para Mack", 5, tecnico, cliente, "Linux", "4.5", "SQL", "192.168.0.1");
 
     private RegistroChamado rc = new RegistroChamado(assunto, chamado, tecnico);
 
@@ -37,8 +37,9 @@ public class RegistroChamadoTest {
     public void testGetCodigo() {
         System.out.println("getCodigo");
         Integer expResult = codigo;
-        Integer result = chamado.getCodigo();
+        Integer result = rc.getCodigo();
         assertEquals(expResult, result);
+        fail("Não foi criado código do RegistroDeChamado no Construtor!");
     }
 
     /**
@@ -82,11 +83,8 @@ public class RegistroChamadoTest {
     @Test
     public void testGetChamado() {
         System.out.println("getChamado");
-        RegistroChamado instance = null;
-        Chamado expResult = null;
-        Chamado result = instance.getChamado();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        Chamado chamadoReport = rc.getChamado();
+        assertEquals(rc.getChamado(), chamadoReport);
     }
 
     /**
@@ -95,11 +93,8 @@ public class RegistroChamadoTest {
     @Test
     public void testGetHora() {
         System.out.println("getHora");
-        RegistroChamado instance = null;
-        String expResult = "";
-        String result = instance.getHora();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        String horaReport = rc.getHora();
+        assertEquals(rc.getHora(), horaReport);
     }
 
     /**
@@ -108,10 +103,9 @@ public class RegistroChamadoTest {
     @Test
     public void testSetHora() {
         System.out.println("setHora");
-        String hora = "";
-        RegistroChamado instance = null;
-        instance.setHora(hora);
-        fail("The test case is a prototype.");
+        String horaNova = "11:30:00";
+        rc.setHora(horaNova);        
+        assertEquals(horaNova ,rc.getHora());
     }
 
     /**
@@ -120,11 +114,8 @@ public class RegistroChamadoTest {
     @Test
     public void testGetData() {
         System.out.println("getData");
-        RegistroChamado instance = null;
-        String expResult = "";
-        String result = instance.getData();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        String dataReport = rc.getData();
+        assertEquals(rc.getData(), dataReport);
     }
 
     /**
@@ -133,10 +124,9 @@ public class RegistroChamadoTest {
     @Test
     public void testSetData() {
         System.out.println("setData");
-        String data = "";
-        RegistroChamado instance = null;
-        instance.setData(data);
-        fail("The test case is a prototype.");
+        String dataNova = "01/05/2016";
+        rc.setData(dataNova);        
+        assertEquals(dataNova ,rc.getData());
     }
 
     /**
@@ -145,11 +135,8 @@ public class RegistroChamadoTest {
     @Test
     public void testGetAssunto() {
         System.out.println("getAssunto");
-        RegistroChamado instance = null;
-        String expResult = "";
-        String result = instance.getAssunto();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        String assuntoReport = rc.getAssunto();
+        assertEquals(rc.getAssunto(), assuntoReport);
     }
 
     /**
@@ -158,10 +145,9 @@ public class RegistroChamadoTest {
     @Test
     public void testSetAssunto() {
         System.out.println("setAssunto");
-        String assunto = "";
-        RegistroChamado instance = null;
-        instance.setAssunto(assunto);
-        fail("The test case is a prototype.");
+        String assuntoNovo = "Cachorro destruiu tudo";
+        rc.setAssunto(assuntoNovo);        
+        assertEquals(assuntoNovo ,rc.getAssunto());
     }
 
     /**
@@ -170,11 +156,8 @@ public class RegistroChamadoTest {
     @Test
     public void testGetTecnico() {
         System.out.println("getTecnico");
-        RegistroChamado instance = null;
-        Tecnico expResult = null;
-        Tecnico result = instance.getTecnico();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        Tecnico tecnico2 = rc.getTecnico();
+        assertEquals(rc.getTecnico(), tecnico2);
     }
 
     /**
@@ -183,10 +166,9 @@ public class RegistroChamadoTest {
     @Test
     public void testSetTecnico() {
         System.out.println("setTecnico");
-        Tecnico tecnico = null;
-        RegistroChamado instance = null;
-        instance.setTecnico(tecnico);
-        fail("The test case is a prototype.");
+        Tecnico tecnico2 = new Tecnico("Afonso Aristides", 991234567);
+        rc.setTecnico(tecnico2);
+        assertEquals(tecnico2 ,rc.getTecnico());
     }
 
 }
