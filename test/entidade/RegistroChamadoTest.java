@@ -46,7 +46,7 @@ public class RegistroChamadoTest {
      * Test of setCodigo method, of class RegistroChamado.
      */
     @Test
-    public void testSetCodigo() {
+    public void testSetCodigo() { 
         System.out.println("setCodigo");
         Integer codigo = 10;
         chamado.setCodigo(codigo);
@@ -171,4 +171,5 @@ public class RegistroChamadoTest {
         assertEquals(tecnico2 ,rc.getTecnico());
     }
 
+    
 }
